@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/patpersonal/Documents/pong/main.cc
+SDL2/SDL.h
+-
+SDL2_image/SDL_image.h
+-
+stdio.h
+-
+string
+-
+
