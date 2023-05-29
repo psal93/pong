@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.19)
+project(Pong)
+message("Compiler ID: ${CMAKE_CXX_COMPILER_ID}")
+message("Compiler Version: ${CMAKE_CXX_COMPILER_VERSION}")
+
+find_package(SDL2 REQUIRED COMPONENTS SDL2)
+find_package(SDL2_image REQUIRED)
+add_executable(pong main.cc)
+target_link_libraries(pong PRIVATE SDL2::SDL2)
+target_link_libraries(pong PRIVATE SDL2_image::SDL2_image)

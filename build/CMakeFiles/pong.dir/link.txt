@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++  -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names -F /Library/Frameworks/ -framework SDL2 -F /Library/Frameworks/ -framework SDL2_image CMakeFiles/pong.dir/main.cc.o -o pong 
