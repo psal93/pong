@@ -6,11 +6,41 @@
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
+
+//Key press surfaces constants
+enum KeyPressSurfaces
+{
+    KEY_PRESS_SURFACE_DEFAULT,
+    KEY_PRESS_SURFACE_UP,
+    KEY_PRESS_SURFACE_DOWN,
+    KEY_PRESS_SURFACE_LEFT,
+    KEY_PRESS_SURFACE_RIGHT,
+    KEY_PRESS_SURFACE_TOTAL
+};
+
 SDL_Window* gWindow = NULL;
 
 SDL_Surface* gScreenSurface = NULL;
 
 SDL_Surface* gHelloWorld = NULL;
+
+//Current displayed image
+SDL_Surface* gCurrentSurface = NULL;
+
+//The images that correspond to a keypress
+SDL_Surface* gKeyPressSurfaces[ KEY_PRESS_SURFACE_TOTAL ];
+
+SDL_Surface* loadSurface( std::string path )
+{
+    //Load image at specified path
+    SDL_Surface* loadedSurface = SDL_LoadBMP( path.c_str() );
+    if( loadedSurface == NULL )
+    {
+        printf( "Unable to load image %s! SDL Error: %s\n", path.c_str(), SDL_GetError() );
+    }
+
+    return loadedSurface;
+}
 
 bool init() {
     bool success = true;
@@ -96,7 +126,13 @@ int main( int argc, char* args[]) {
         //Update the surface
         SDL_UpdateWindowSurface( gWindow );
         //Hack to get window to stay up
-        SDL_Event e; bool quit = false; while( quit == false ){ while( SDL_PollEvent( &e ) ){ if( e.type == SDL_QUIT ) quit = true; } }
+        SDL_Event e; 
+        bool quit = false; 
+        while ( quit == false ) {
+            while ( SDL_PollEvent( &e ) ) {
+                if ( e.type == SDL_QUIT ) quit = true; 
+            }
+        }
     }
 
     //Free resources and close SDL
